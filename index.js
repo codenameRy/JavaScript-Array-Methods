@@ -137,3 +137,102 @@ powerCalc.addMethod("**", (a, b) => a ** b);
 
 let result = powerCalc.calculate("2 ** 3");
 alert( result ); // 8
+
+//Challenge 7 - Map to names
+
+// You have an array of user objects, each one has user.name. Write the code that converts it into an array of names.
+
+//Solution
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30 };
+let mary = { name: "Mary", age: 28 };
+
+let users = [ john, pete, mary ];
+
+let names = users.map(item => item.name)
+
+alert( names ); // John, Pete, Mary
+
+//Challenge 8 - Map to objects
+
+// You have an array of user objects, each one has name, surname and id.
+
+// Write the code to create another array from it, of objects with id and fullName, where fullName is generated from name and surname.
+
+//Solution
+
+let john2 = { name: "John", surname: "Smith", id: 1 };
+let pete2 = { name: "Pete", surname: "Hunt", id: 2 };
+let mary2 = { name: "Mary", surname: "Key", id: 3 };
+
+let users2 = [ john2, pete2, mary2 ];
+
+let usersMapped = users2.map(user => ({
+  fullName: `${user.name} ${user.surname}`,
+  id: user.id
+})
+)
+
+/*
+usersMapped = [
+  { fullName: "John Smith", id: 1 },
+  { fullName: "Pete Hunt", id: 2 },
+  { fullName: "Mary Key", id: 3 }
+]
+*/
+
+alert( usersMapped[0].id ) // 1
+alert( usersMapped[0].fullName ) // John Smith
+
+//Challenge 9 - Sort users by age
+
+// Write the function sortByAge(users) that gets an array of objects with the age property and sorts them by age.
+
+let peace = { name: "Peace", age: 25 };
+let zara = { name: "Zara", age: 30 };
+let alexandra = { name: "Alexandra", age: 28 };
+
+let arr5 = [ peace, zara, alexandra ];
+
+function sortByAge(users) {
+  return users.sort( (a, b) => a.age > b.age ? 1 : -1)
+}
+
+sortByAge(arr5);
+
+// now: [ peace, alexandra, zara ];
+alert(arr5[0].name); // Peace
+alert(arr5[1].name); // Alexandra
+alert(arr5[2].name); // Zara
+
+//Challenge 10 - Shuffle an array
+
+// Write the function shuffle(array) that shuffles (randomly reorders) elements of the array.
+
+// Multiple runs of shuffle may lead to different orders of elements. For instance:
+
+
+
+let array = [1, 2, 3];
+
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+  let j = Math.floor(Math.random() * (i + 1));
+  let temp = array[i];
+  array[i] = array[j];
+  array[j] = temp;
+  }
+}
+
+shuffle(array);
+console.log(array);
+// array = [3, 2, 1]
+
+shuffle(array);
+console.log(array);
+// array = [2, 1, 3]
+
+shuffle(array);
+console.log(array);
+// array = [3, 1, 2]
+// ...
