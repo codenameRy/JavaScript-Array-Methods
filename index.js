@@ -211,8 +211,7 @@ alert(arr5[2].name); // Zara
 
 // Multiple runs of shuffle may lead to different orders of elements. For instance:
 
-
-
+//Solution
 let array = [1, 2, 3];
 
 function shuffle(array) {
@@ -236,3 +235,75 @@ shuffle(array);
 console.log(array);
 // array = [3, 1, 2]
 // ...
+
+//Challenge 11 - Get average age
+
+// Write the function getAverageAge(users) that gets an array of objects with property age and returns the average age.
+
+// The formula for the average is (age1 + age2 + ... + ageN) / N.
+
+//Solution
+let trex = { name: "T-Rex", age: 25 };
+let jura = { name: "Jura", age: 30 };
+let scotty = { name: "Scotty", age: 29 };
+
+function getAverageAge(users) {
+  return users.reduce( (a, b) => a + b.age, 0) / users.length
+}
+
+
+
+let array2 = [ trex, jura, scotty ];
+
+alert( getAverageAge(array2) ); // (25 + 30 + 29) / 3 = 28
+
+//Challenge 12 - Filter unique array members
+
+// Let arr be an array.
+
+// Create a function unique(arr) that should return an array with unique items of arr.
+
+
+//Solution with ES6 with Set method
+function unique(arr) {
+  return [...new Set(arr)]
+}
+
+let strings = ["Hare", "Krishna", "Hare", "Krishna",
+  "Krishna", "Krishna", "Hare", "Hare", ":-O"
+];
+
+alert( unique(strings) ); // Hare, Krishna, :-O
+
+//Challenge 13 - Create keyed object from array
+
+// Let’s say we received an array of users in the form {id:..., name:..., age... }.
+
+// Create a function groupById(arr) that creates an object from it, with id as the key, and array items as values.
+
+let usersX = [
+  {id: 'john', name: "John Smith", age: 20},
+  {id: 'ann', name: "Ann Smith", age: 24},
+  {id: 'pete', name: "Pete Peterson", age: 31},
+];
+
+let usersById = groupById(usersX);
+
+/*
+// after the call we should have:
+
+usersById = {
+  john: {id: 'john', name: "John Smith", age: 20},
+  ann: {id: 'ann', name: "Ann Smith", age: 24},
+  pete: {id: 'pete', name: "Pete Peterson", age: 31},
+}
+*/
+
+function groupById(array) {
+  return array.reduce((obj, item) => {
+    obj[item.id] = item;
+    return obj
+  }, {});
+};
+
+console.log(usersById)
